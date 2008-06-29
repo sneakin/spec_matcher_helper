@@ -4,7 +4,7 @@
 # Copyright:: Public domain
 # License:: You are free to use and abuse this in anyway.
 require 'spec'
-require 'spec_matcher_dsl'
+require 'spec_matcher_helper'
 
 defmatcher :test_matcher do
   attr_accessor :expecting, :target
@@ -14,7 +14,6 @@ defmatcher :test_matcher do
   end
   
   def matches?(target) #:nodoc:all
-    @target = target
   end
   
   def failure_message  #:nodoc:all
@@ -32,7 +31,6 @@ class InheritsFrom
   end
   
   def was_inherited?
-    true
   end
 end
 
@@ -42,7 +40,6 @@ defmatcher :test_matcher_with_super => InheritsFrom do
   end
   
   def matches?(target) #:nodoc:all
-    @target = target
   end
 end
 
@@ -55,9 +52,6 @@ describe 'defmatcher', :shared => true do
     it "passes along its arguments" do
       @matcher.expecting.should == @args
     end
-  end
-
-  describe 'generates a class using the camelized name that' do
   end
 end
 
