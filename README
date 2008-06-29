@@ -1,0 +1,24 @@
+RSpec Matcher Helper
+=====================
+
+Created by Nolan Eakins <nolan@eakins.net>
+This library is in the public domain.
+
+An Example
+===========
+
+defmatcher :uses_matcher => InheritsFrom do
+  def initialize(expecting)  #:nodoc:all
+    super(expecting)
+  end
+  
+  def matches?(target) #:nodoc:all
+    self.expecting == target.to_s
+  end
+end
+
+describe Something do
+  it "uses the matcher" do
+    '3'.should use_matcher(3) # should pass
+  end
+end
