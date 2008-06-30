@@ -10,7 +10,7 @@ require 'active_support'
 # the typical set of methods: initialize, matches?, etc. The one thing you
 # do not have to do is define a method to instantiate your matcher.
 #
-# By calling this you will get a class matching the camelized version of {name},
+# By calling this you will get a class whose name is {name.camelize},
 # along with a method called {name}.
 #
 # If you need or want to inherit from another matcher, you can pass in a hash
