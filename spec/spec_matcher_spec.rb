@@ -6,7 +6,7 @@
 require 'spec'
 require 'spec_matcher_helper'
 
-defmatcher :test_matcher do
+matcher :test_matcher do
   attr_accessor :expecting, :target
   
   def initialize(*expecting)  #:nodoc:all
@@ -34,7 +34,7 @@ class InheritsFrom
   end
 end
 
-defmatcher :test_matcher_with_super => InheritsFrom do
+matcher :test_matcher_with_super => InheritsFrom do
   def initialize(expecting)  #:nodoc:all
     super(expecting)
   end

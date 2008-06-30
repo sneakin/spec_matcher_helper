@@ -7,18 +7,24 @@ This library is in the public domain.
 An Example
 ===========
 
-defmatcher :uses_matcher => InheritsFrom do
-  def initialize(expecting)  #:nodoc:all
-    super(expecting)
+matcher :inherits_from do
+  def initialize(expecting)
+    @expecting = expecting
   end
-  
-  def matches?(target) #:nodoc:all
-    self.expecting == target.to_s
+
+  def matches?(target)
+    target == @expecting
+  end
+end
+
+matcher :match_five => :inherits_from do
+  def initialize  #:nodoc:all
+    super(5)
   end
 end
 
 describe Something do
   it "uses the matcher" do
-    '3'.should use_matcher(3) # should pass
+    (2 + 2).should_not match_five
   end
 end
