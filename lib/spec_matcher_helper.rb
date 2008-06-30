@@ -16,6 +16,13 @@ require 'active_support'
 # If you need or want to inherit from another matcher, you can pass in a hash
 # with the first key being the name of the matcher and the value either being
 # another matcher's name or a class.
+#
+# Example:
+#   matcher :match_five => :inherits_from do
+#     def matches?(target)  #:nodoc:all
+#       target == 5
+#     end
+#   end
 def matcher(name, &code)
   parent = Object
   name, parent = name.to_a.first if name.kind_of? Hash
